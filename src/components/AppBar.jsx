@@ -2,14 +2,14 @@ import React from "react";
 import { StyleSheet, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 
-import themes from "../themes";
+import theme from "../theme";
 
 import AppBarTab from "./AppBarTab";
 
 const styles = StyleSheet.create({
     container: {
         paddingTop: Constants.statusBarHeight,
-        backgroundColor: themes.colors.appBarPrimary,
+        backgroundColor: theme.colors.appBarPrimary,
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",

@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 import StackedElement from "./StackedElement";
+import Text from "./Text";
 
 const styles = StyleSheet.create({
     cardContainer: {

@@ -1,6 +1,8 @@
 import React from "react";
-import { Text, TouchableWithoutFeedback, StyleSheet, View } from "react-native";
+import { TouchableWithoutFeedback, StyleSheet, View } from "react-native";
 import { Link } from "react-router-native";
+
+import Text from "./Text";
 
 const styles = StyleSheet.create({
     text: {
