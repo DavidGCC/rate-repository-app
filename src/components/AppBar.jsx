@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingLeft: 10,
         paddingRight: 10,
-        minWidth: Dimensions.get("window").width
+        minWidth: Dimensions.get("window").width,
+        height: 120
     },
 });
 
