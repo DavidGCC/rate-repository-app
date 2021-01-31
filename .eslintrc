@@ -15,6 +15,6 @@
       "semi": "error",
       "quotes": ["error", "double"],
       "no-unused-vars": "warn",
-      "object-curly-spacing": ["error", "alawys"]
+      "object-curly-spacing": ["error", "always"]
     }
 }
