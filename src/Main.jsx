@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Route, Switch } from "react-router-native";
 import { Formik } from "formik";
+import * as yup from "yup";
+
 
 import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
@@ -11,6 +13,12 @@ const styles = StyleSheet.create({
     container: {
         
     },
+});
+
+const validationSchema = yup.object().shape({
+    username: yup
+        .string()
+        .required("Username is required")
 });
 
 const Main = () => {
@@ -26,7 +34,7 @@ const Main = () => {
                     <RepositoryList />
                 </Route>
                 <Route path="/signin">
-                    <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit}>
+                    <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit} validationSchema={validationSchema}>
                     {({ handleSubmit }) => <SignIn onSubmit={handleSubmit} />}
                     </Formik>
                 </Route>
