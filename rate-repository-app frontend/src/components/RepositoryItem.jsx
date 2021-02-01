@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         flex: 1,
         margin: 10,
-        marginBottom: 3,
+        marginBottom: 0,
         backgroundColor: "#fff",
         shadowColor: "#000",
         shadowOffset: {

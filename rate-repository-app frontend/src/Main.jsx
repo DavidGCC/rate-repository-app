@@ -11,8 +11,8 @@ import AppBar from "./components/AppBar";
 
 const styles = StyleSheet.create({
     container: {
-        
-    },
+
+    }
 });
 
 const validationSchema = yup.object().shape({
