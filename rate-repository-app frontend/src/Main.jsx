@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Route, Switch } from "react-router-native";
-import { Formik } from "formik";
-import * as yup from "yup";
-import Constants from "expo-constants";
 
 import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
 import AppBar from "./components/AppBar";
+import SignOut from "./components/SignOut";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,19 +13,9 @@ const styles = StyleSheet.create({
     }
 });
 
-const validationSchema = yup.object().shape({
-    username: yup
-        .string()
-        .required("Username is required")
-});
+
 
 const Main = () => {
-    const onSubmit = () => {
-        console.log("submited form");
-    };
-
-    console.log(Constants.manifest);
-
     return (
         <View style={styles.container}>
             <AppBar />
@@ -36,9 +24,10 @@ const Main = () => {
                     <RepositoryList />
                 </Route>
                 <Route path="/signin">
-                    <Formik initialValues={{ username: "", password: "" }} onSubmit={onSubmit} validationSchema={validationSchema}>
-                    {({ handleSubmit }) => <SignIn onSubmit={handleSubmit} />}
-                    </Formik>
+                    <SignIn />
+                </Route>
+                <Route path="/signout">
+                    <SignOut />
                 </Route>
             </Switch>
         </View>
