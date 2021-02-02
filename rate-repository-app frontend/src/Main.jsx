@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Route, Switch } from "react-router-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-
+import Constants from "expo-constants";
 
 import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
@@ -25,6 +25,8 @@ const Main = () => {
     const onSubmit = () => {
         console.log("submited form");
     };
+
+    console.log(Constants.manifest);
 
     return (
         <View style={styles.container}>
