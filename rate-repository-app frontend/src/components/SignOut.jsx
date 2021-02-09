@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-native";
+import { useHistory, BackButton } from "react-router-native";
 import { TouchableHighlight, StyleSheet } from "react-native";
 import { useApolloClient } from "@apollo/react-hooks";
 import AuthStorageContext from "../contexts/AuthStorageContext";
@@ -37,6 +37,7 @@ const SignOut = () => {
     return (
         <TouchableHighlight style={styles.container} onPress={onPress}>
             <Text style={styles.button}>Sign Out</Text>
+            <BackButton></BackButton>
         </TouchableHighlight>
     );
 };

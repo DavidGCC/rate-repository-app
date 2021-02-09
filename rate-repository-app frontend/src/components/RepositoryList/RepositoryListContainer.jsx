@@ -1,17 +1,19 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
+import { useHistory, BackButton } from "react-router-native";
 
 import RepositoryItem from "./RepositoryItem";
 
 const styles = StyleSheet.create({
     separator: {
-        height: 10
-    }
-})
+        height: 10,
+    },
+});
 
 const ItemSeparator = () => <View style={styles.separator}></View>;
 
 const RepositoryListContainer = ({ repositories }) => {
+    const history = useHistory();
 
     const repositoryNodes = repositories
         ? repositories?.edges.map((edges) => edges.node)
@@ -22,9 +24,10 @@ const RepositoryListContainer = ({ repositories }) => {
             data={repositoryNodes}
             ItemSeparatorComponent={ItemSeparator}
             renderItem={({ item }) => <RepositoryItem item={item} />}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id}
             contentContainerStyle={{ paddingBottom: 150 }}
             testID="RepoList"
+            ListFooterComponent={BackButton}
         />
     );
 };

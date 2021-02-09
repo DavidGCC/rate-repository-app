@@ -1,13 +1,13 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
 
-import useRepository from "../../hooks/useRepository";
+import useRepositories from "../../hooks/useRepositories";
 import RepositoryListContainer from "./RepositoryListContainer";
 
 
 
 const RepositoryList = () => {
-    const { data, loading } = useRepository();
+    const { data, loading } = useRepositories();
     if (loading) {
         return <ActivityIndicator size="large"></ActivityIndicator>;
     }

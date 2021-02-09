@@ -1,23 +1,18 @@
 import { gql } from "apollo-boost";
+import { repoInfoFragment } from "./fragments";
+
 
 export const GET_REPOS = gql`
     query {
         repositories {
             edges {
                 node {
-                    id
-                    fullName
-                    ratingAverage
-                    language
-                    description
-                    forksCount
-                    reviewCount
-                    ownerAvatarUrl
-                    stargazersCount
+                    ...repoInfo
                 }
             }
         }
     }
+    ${repoInfoFragment}
 `;
 
 export const GET_AUTHORIZED_USER = gql`
@@ -27,4 +22,14 @@ export const GET_AUTHORIZED_USER = gql`
             username
         }
     }
+`;
+
+export const GET_REPOSITORY = gql`
+    query getRepository($id: ID!) {
+        repository (id: $id) {
+            ...repoInfo
+            url
+        }
+    }
+    ${repoInfoFragment}
 `;

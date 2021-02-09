@@ -1,12 +1,16 @@
-import { useQuery } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 
-import { GET_REPOS } from "../graphql/queries";
+import { GET_REPOSITORY } from "../graphql/queries";
 
-const useRepositories = () => {
-    const { data, loading, error } = useQuery(GET_REPOS, {
-        fetchPolicy: "cache-and-network"
-    });
-    return { data, loading, error };
-};
+const useRepository = () => {
+    const [getRepository, result] = useLazyQuery(GET_REPOSITORY);
 
-export default useRepositories;
+    const getRepo = async (id) => {
+        const response = await getRepository({ variables: { id } });
+        return response;
+    }
+
+    return [getRepo, result];
+}
+
+export default useRepository;

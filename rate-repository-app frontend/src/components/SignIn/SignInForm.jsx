@@ -1,6 +1,7 @@
 import React from "react";
 import FormikTextInput from "../FormikTextInput";
 import * as yup from "yup";
+import { BackButton } from "react-router-native";
 
 import { Formik } from "formik";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
@@ -62,6 +63,7 @@ const SignInForm = ({ onSubmit }) => {
                     >
                         <Text style={styles.button}>Sign In</Text>
                     </TouchableHighlight>
+                    <BackButton></BackButton>
                 </View>
             )}
         </Formik>

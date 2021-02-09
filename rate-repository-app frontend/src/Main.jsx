@@ -6,6 +6,7 @@ import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
 import AppBar from "./components/AppBar";
 import SignOut from "./components/SignOut";
+import SingleRepository from "./components/SingleRepository";
 
 const styles = StyleSheet.create({
     container: {
@@ -28,6 +29,9 @@ const Main = () => {
                 </Route>
                 <Route path="/signout">
                     <SignOut />
+                </Route>
+                <Route path="/:id">
+                    <SingleRepository />
                 </Route>
             </Switch>
         </View>
