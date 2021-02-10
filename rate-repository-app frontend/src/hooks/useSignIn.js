@@ -13,10 +13,15 @@ const useSignIn = () => {
     const history = useHistory();
 
     const signIn = async ({ username, password }) => {
-        const response = await mutate({ variables: { credentials: { username, password } } });
-        authStorage.setAccessToken(response.data.authorize.accessToken);
-        client.resetStore();
-        history.push("/");
+        let response;
+        try {
+            response = await mutate({ variables: { credentials: { username, password } } });
+            authStorage.setAccessToken(response.data.authorize.accessToken);
+            client.resetStore();
+            history.push("/");
+        } catch (error) {
+            console.error(error);
+        }
         return response;
     };
 

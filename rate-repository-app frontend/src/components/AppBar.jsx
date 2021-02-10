@@ -38,7 +38,10 @@ const AppBar = () => {
         <ScrollView contentContainerStyle={styles.container} horizontal={true}>
             <AppBarTab tabText="Repositories" target={"/"} />
             {!data.authorizedUser ? (
-                <AppBarTab tabText="Sign In" target={"/signin"} />
+                <>
+                    <AppBarTab tabText="Sign In" target={"/signin"} />
+                    <AppBarTab tabText="Sign Up" target="signup" />
+                </>
             ) : (
                 <>
                     <AppBarTab tabText="Create Review" target={"/createreview"} />

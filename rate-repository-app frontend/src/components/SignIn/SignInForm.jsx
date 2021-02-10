@@ -13,19 +13,23 @@ const styles = StyleSheet.create({
         margin: 20,
     },
     input: {
-        height: 50,
+        height: 60,
         borderWidth: 1,
         marginBottom: 10,
         borderColor: "gray",
         borderRadius: 5,
-        padding: 10
+        padding: 10,
+        fontSize: 20,
     },
 });
 
 const validationSchema = yup.object().shape({
     username: yup
         .string()
-        .required("Username is required")
+        .required("Username is required"),
+    password: yup
+        .string()
+        .required("Password is required")
 });
 
 const SignInForm = ({ onSubmit }) => {
