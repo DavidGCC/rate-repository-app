@@ -10,7 +10,7 @@ const useRepository = () => {
         return response;
     }
 
-    return [getRepo, result];
+    return { getRepo, result };
 }
 
 export default useRepository;

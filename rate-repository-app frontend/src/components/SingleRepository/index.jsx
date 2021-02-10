@@ -5,14 +5,7 @@ import { View, StyleSheet, ActivityIndicator } from "react-native";
 import useRepository from "../../hooks/useRepository";
 import RepositoryItem from "../RepositoryList/RepositoryItem";
 
-const SingleRepository = () => {
-    const { id } = useParams();
-    const [ getRepo, result ] = useRepository();
-
-    React.useEffect(() => {
-        getRepo(id);
-    }, [])
-
+const SingleRepository = ({ result }) => {
     if (!result.data) {
         return <ActivityIndicator></ActivityIndicator>
     }

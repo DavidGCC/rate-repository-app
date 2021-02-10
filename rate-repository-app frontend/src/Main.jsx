@@ -6,7 +6,7 @@ import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
 import AppBar from "./components/AppBar";
 import SignOut from "./components/SignOut";
-import SingleRepository from "./components/SingleRepository";
+import ReposiotryReviews from "./components/RepositoryReviews";
 
 const styles = StyleSheet.create({
     container: {
@@ -31,7 +31,7 @@ const Main = () => {
                     <SignOut />
                 </Route>
                 <Route path="/:id">
-                    <SingleRepository />
+                    <ReposiotryReviews />
                 </Route>
             </Switch>
         </View>
