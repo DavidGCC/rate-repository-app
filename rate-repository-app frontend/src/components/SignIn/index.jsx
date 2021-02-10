@@ -3,21 +3,18 @@ import React from "react";
 import SignInForm from "./SignInForm";
 import useSignIn from "../../hooks/useSignIn";
 
-
-
 const SignIn = () => {
     const [signIn, result] = useSignIn();
+    const [isInvalid, setIsInvalid] = React.useState(false);
     const onSubmit = async ({ username, password }) => {
         try {
-            const { data } = await signIn({ username, password });
+            await signIn({ username, password });
         } catch (error) {
-            console.error(error);
+            setIsInvalid(true);
         }
     };
 
-    return (
-        <SignInForm onSubmit={onSubmit} />
-    );
+    return <SignInForm onSubmit={onSubmit} isInvalid={isInvalid}/>;
 };
 
 export default SignIn;

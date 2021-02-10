@@ -21,25 +21,28 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
     },
+    error: {
+        fontSize: 18,
+        marginBottom: 8,
+        marginLeft: 50,
+        color: "#d73a4a"
+    }
 });
 
 const validationSchema = yup.object().shape({
-    username: yup
-        .string()
-        .required("Username is required"),
-    password: yup
-        .string()
-        .required("Password is required")
+    username: yup.string().required("Username is required"),
+    password: yup.string().required("Password is required"),
 });
 
-const SignInForm = ({ onSubmit }) => {
+const SignInForm = ({ onSubmit, isInvalid }) => {
+    console.log(isInvalid);
     return (
         <Formik
             initialValues={{ username: "", password: "" }}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
         >
-            {({ handleSubmit }) => (
+            {({ handleSubmit, dirty }) => (
                 <View style={styles.container}>
                     <FormikTextInput
                         name="username"
@@ -52,6 +55,11 @@ const SignInForm = ({ onSubmit }) => {
                         secureTextEntry={true}
                         style={styles.input}
                     />
+                    {isInvalid && (
+                        <View style={styles.errorContainer}>
+                            <Text style={styles.error}>Invalid username or password</Text>
+                        </View>
+                    )}
                     <PrimaryButton text="Sign In" onPress={handleSubmit} />
                     <BackButton></BackButton>
                 </View>
