@@ -40,7 +40,10 @@ const AppBar = () => {
             {!data.authorizedUser ? (
                 <AppBarTab tabText="Sign In" target={"/signin"} />
             ) : (
-                <AppBarTab tabText="Sign Out" target={"/signout"} />
+                <>
+                    <AppBarTab tabText="Create Review" target={"/createreview"} />
+                    <AppBarTab tabText="Sign Out" target={"/signout"} />
+                </>
             )}
         </ScrollView>
     );

@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn";
 import AppBar from "./components/AppBar";
 import SignOut from "./components/SignOut";
 import ReposiotryReviews from "./components/RepositoryReviews";
+import CreateReview from "./components/ReviewForm";
 
 const styles = StyleSheet.create({
     container: {
@@ -21,6 +22,9 @@ const Main = () => {
         <View style={styles.container}>
             <AppBar />
             <Switch>
+                <Route path="/createreview">
+                    <CreateReview />
+                </Route>
                 <Route exact path="/">
                     <RepositoryList />
                 </Route>

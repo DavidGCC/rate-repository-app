@@ -6,7 +6,6 @@ import AuthStorageContext from "../contexts/AuthStorageContext";
 
 import Text from "./Text";
 
-
 const styles = StyleSheet.create({
     button: {
         backgroundColor: "#A93226",
@@ -14,13 +13,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         textAlign: "center",
         fontSize: 30,
-        color: "#fff"
+        color: "#fff",
     },
     container: {
         marginTop: 300,
         marginHorizontal: 80,
-        borderRadius: 10
-    }
+        borderRadius: 10,
+    },
 });
 
 const SignOut = () => {
@@ -35,10 +34,12 @@ const SignOut = () => {
     };
 
     return (
-        <TouchableHighlight style={styles.container} onPress={onPress}>
-            <Text style={styles.button}>Sign Out</Text>
+        <>
+            <TouchableHighlight style={styles.container} onPress={onPress}>
+                <Text style={styles.button}>Sign Out</Text>
+            </TouchableHighlight>
             <BackButton></BackButton>
-        </TouchableHighlight>
+        </>
     );
 };
 

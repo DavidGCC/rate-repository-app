@@ -6,6 +6,8 @@ import { BackButton } from "react-router-native";
 import { Formik } from "formik";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
+import PrimaryButton from "../PrimaryButton";
+
 const styles = StyleSheet.create({
     container: {
         margin: 20,
@@ -18,17 +20,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10
     },
-    button: {
-        backgroundColor: "#5482f7",
-        height: 50,
-        borderRadius: 10,
-        textAlign: "center",
-        fontSize: 30,
-        color: "#fff"
-    },
-    buttonContainer: {
-        borderRadius: 10
-    }
 });
 
 const validationSchema = yup.object().shape({
@@ -57,12 +48,7 @@ const SignInForm = ({ onSubmit }) => {
                         secureTextEntry={true}
                         style={styles.input}
                     />
-                    <TouchableHighlight
-                        style={styles.buttonContainer}
-                        onPress={handleSubmit}
-                    >
-                        <Text style={styles.button}>Sign In</Text>
-                    </TouchableHighlight>
+                    <PrimaryButton text="Sign In" onPress={handleSubmit} />
                     <BackButton></BackButton>
                 </View>
             )}

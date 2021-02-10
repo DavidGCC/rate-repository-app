@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item, fullView }) => {
     return (
-        <Link to={`/${item.id}`} component={TouchableOpacity}>
+        <Link to={`/${item?.id}`} component={TouchableOpacity}>
             <View style={styles.cardContainer} testID="RepoCard">
                 <CardHeader item={item} />
                 <CardPopularity item={item} />
