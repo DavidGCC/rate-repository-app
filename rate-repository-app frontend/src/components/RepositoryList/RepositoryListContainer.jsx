@@ -1,8 +1,9 @@
 import React from "react";
 import { FlatList, StyleSheet, View, TouchableOpacity } from "react-native";
-import { useHistory, BackButton } from "react-router-native";
+import { BackButton } from "react-router-native";
 
 import RepositoryItem from "./RepositoryItem";
+import SortDropdown from "../Sort";
 
 const styles = StyleSheet.create({
     separator: {
@@ -12,9 +13,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator}></View>;
 
-const RepositoryListContainer = ({ repositories }) => {
-    const history = useHistory();
-
+const RepositoryListContainer = ({ repositories, sort, setSort }) => {
     const repositoryNodes = repositories
         ? repositories?.edges.map((edges) => edges.node)
         : [];
@@ -28,6 +27,7 @@ const RepositoryListContainer = ({ repositories }) => {
             contentContainerStyle={{ paddingBottom: 150 }}
             testID="RepoList"
             ListFooterComponent={BackButton}
+            ListHeaderComponent={() => <SortDropdown sort={sort} setSort={setSort} />}
         />
     );
 };
