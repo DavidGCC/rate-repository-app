@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     },
     headerTextContainer: {
         width: 300,
+        flex: 1
     },
 });
 
