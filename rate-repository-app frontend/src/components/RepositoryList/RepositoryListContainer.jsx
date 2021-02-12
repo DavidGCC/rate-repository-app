@@ -4,6 +4,7 @@ import { BackButton } from "react-router-native";
 
 import RepositoryItem from "./RepositoryItem";
 import SortDropdown from "../Sort";
+import Search from "../Search";
 
 const styles = StyleSheet.create({
     separator: {
@@ -13,7 +14,12 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator}></View>;
 
-const RepositoryListContainer = ({ repositories, sort, setSort }) => {
+const RepositoryListContainer = ({
+    repositories,
+    sort,
+    setSort,
+    query,
+    setQuery,}) => {
     const repositoryNodes = repositories
         ? repositories?.edges.map((edges) => edges.node)
         : [];
@@ -27,7 +33,12 @@ const RepositoryListContainer = ({ repositories, sort, setSort }) => {
             contentContainerStyle={{ paddingBottom: 150 }}
             testID="RepoList"
             ListFooterComponent={BackButton}
-            ListHeaderComponent={() => <SortDropdown sort={sort} setSort={setSort} />}
+            ListHeaderComponent={() => (
+                <>
+                    <Search query={query} setQuery={setQuery} />
+                    <SortDropdown sort={sort} setSort={setSort} />
+                </>
+            )}
         />
     );
 };

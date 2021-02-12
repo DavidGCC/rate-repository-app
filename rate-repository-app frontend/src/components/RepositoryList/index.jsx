@@ -9,8 +9,9 @@ import RepositoryListContainer from "./RepositoryListContainer";
 
 const RepositoryList = () => {
     const [sort, setSort] = React.useState("latest");
+    const [query, setQuery] = React.useState("");
     console.log(sort);
-    const { data, loading } = useRepositories(sort);
+    const { data, loading } = useRepositories(sort, query);
     if (loading) {
         const size = Platform.select({
             android: 100,
@@ -21,7 +22,12 @@ const RepositoryList = () => {
     }
 
     return (
-        <RepositoryListContainer repositories={data?.repositories} sort={sort} setSort={setSort}/>
+        <RepositoryListContainer 
+            repositories={data?.repositories} 
+            sort={sort} 
+            setSort={setSort}
+            query={query}
+            setQuery={setQuery}/>
     );
 };
 

@@ -3,8 +3,8 @@ import { repoInfoFragment } from "./fragments";
 
 
 export const GET_REPOS = gql`
-    query getRepos($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection){
-        repositories (orderBy: $orderBy, orderDirection: $orderDirection){
+    query getRepos($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String){
+        repositories (orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword){
             edges {
                 node {
                     ...repoInfo

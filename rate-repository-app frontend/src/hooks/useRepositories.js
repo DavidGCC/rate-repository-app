@@ -8,10 +8,10 @@ const sortBy = {
     ratingAsc: { orderBy: "RATING_AVERAGE", orderDirection: "ASC" }
 }
 
-const useRepositories = (sort) => {
+const useRepositories = (sort, query) => {
     const { data, loading, error } = useQuery(GET_REPOS, {
-        fetchPolicy: "cache-and-network",
-        variables: {...sortBy[sort]}
+        fetchPolicy: "cache-first",
+        variables: {...sortBy[sort], searchKeyword: query}
     });
     return { data, loading, error };
 };
