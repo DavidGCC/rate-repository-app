@@ -1,5 +1,6 @@
 import React from "react";
 import { ActivityIndicator, Platform } from "react-native";
+import { useDebounce } from "use-debounce";
 
 
 import useRepositories from "../../hooks/useRepositories";
@@ -10,8 +11,9 @@ import RepositoryListContainer from "./RepositoryListContainer";
 const RepositoryList = () => {
     const [sort, setSort] = React.useState("latest");
     const [query, setQuery] = React.useState("");
+    const [queryWithDebounce] = useDebounce(query, 500);
     console.log(sort);
-    const { data, loading } = useRepositories(sort, query);
+    const { data, loading } = useRepositories(sort, queryWithDebounce);
     if (loading) {
         const size = Platform.select({
             android: 100,
