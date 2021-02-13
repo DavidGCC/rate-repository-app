@@ -41,23 +41,25 @@ const styles = StyleSheet.create({
     },
 });
 
-const Review = ({ item }) => {
+const ReviewItem = ({ item, repository }) => {  
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.ratingContainer}>
-                    <Text style={styles.ratingText}>{item.node.rating}</Text>
+                    <Text style={styles.ratingText}>{item?.node.rating}</Text>
                 </View>
                 <View style={styles.nameContainer}>
-                    <Text style={styles.nameText}>{item.node.user.username}</Text>
-                    <Text style={styles.createdDate}>{format(parseISO(item.node.createdAt), "dd.MM.yyyy")}</Text>
+                    {repository 
+                        ? <Text style={styles.nameText}>{item?.node.repository.fullName}</Text>
+                        : <Text style={styles.nameText}>{item?.node.user.username}</Text>}
+                    <Text style={styles.createdDate}>{format(parseISO(item?.node.createdAt), "dd.MM.yyyy")}</Text>
                 </View>
             </View>
             <View style={styles.reviewContainer}>
-                <Text style={styles.reviewText}>{item.node.text}</Text>
+                <Text style={styles.reviewText}>{item?.node.text}</Text>
             </View>
         </View>
     );
 };
 
-export default Review;
+export default ReviewItem;

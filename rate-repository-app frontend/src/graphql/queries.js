@@ -20,10 +20,27 @@ export const GET_REPOS = gql`
 `;
 
 export const GET_AUTHORIZED_USER = gql`
-    query {
+    query getAuthorizedUser($first: Int, $after: String, $includeReviews: Boolean = false){
         authorizedUser {
             id
             username
+            reviews (first: $first, after: $after)@include(if: $includeReviews) {
+                pageInfo {
+                    endCursor
+                    hasNextPage
+                }
+                edges {
+                    node {
+                        id
+                        text
+                        createdAt
+                        rating
+                        repository {
+                            fullName
+                        }
+                    }
+                }
+            }
         }
     }
 `;

@@ -9,6 +9,7 @@ import SignOut from "./components/SignOut";
 import ReposiotryReviews from "./components/RepositoryReviews";
 import CreateReview from "./components/ReviewForm";
 import SignUp from "./components/SignUp";
+import MyReviews from "./components/MyReviews";
 
 const styles = StyleSheet.create({
     container: {
@@ -26,19 +27,22 @@ const Main = () => {
                 <Route exact path="/">
                     <RepositoryList />
                 </Route>
-                <Route path="/createreview">
+                <Route exact path="/myreviews">
+                    <MyReviews />
+                </Route>
+                <Route exact path="/createreview">
                     <CreateReview />
                 </Route>
-                <Route path="/signup">
+                <Route exact path="/signup">
                     <SignUp />
                 </Route>
-                <Route path="/signin">
+                <Route exact path="/signin">
                     <SignIn />
                 </Route>
-                <Route path="/signout">
+                <Route exact path="/signout">
                     <SignOut />
                 </Route>
-                <Route path="/:id">
+                <Route exact path="/:id">
                     <ReposiotryReviews />
                 </Route>
             </Switch>

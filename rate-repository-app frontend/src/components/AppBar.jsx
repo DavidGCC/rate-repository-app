@@ -44,6 +44,7 @@ const AppBar = () => {
                 </>
             ) : (
                 <>
+                    <AppBarTab tabText="My Reviews" target={"/myreviews"} />
                     <AppBarTab tabText="Create Review" target={"/createreview"} />
                     <AppBarTab tabText="Sign Out" target={"/signout"} />
                 </>

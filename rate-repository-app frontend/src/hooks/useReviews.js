@@ -1,48 +1,42 @@
-import { useLazyQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 
-import { GET_REVIEWS } from "../graphql/queries";
+import { GET_AUTHORIZED_USER } from "../graphql/queries";
 
-const useReviews = () => {
-    const [getRepoReviews, result] = useLazyQuery(GET_REVIEWS);
-    
-    const getReviews = async (id) => {
-        return await getRepoReviews({ variables: { id, first: 3} });
-    }
+const useReviews = (variables) => {
+    const { data, loading, fetchMore } = useQuery(GET_AUTHORIZED_USER, {
+        fetchPolicy: "cache-and-network",
+        variables
+    });
 
-    const handleFetchMore = (id) => {
-        const canFetchMore = result.loading && result.data && result.data.reviews.pageInfo.hasNextPage;
+    const handleFetchMore = () => {
+        const canFetchMore = !loading && data && data.authorizedUser.reviews.pageInfo.hasNextPage;
         if (!canFetchMore) {
             return;
         }
 
-        result.fetchMore({
-            query: GET_REVIEWS,
-            variables: {
-                id,
-                first: 3,
-                after: result.data.repository.reviews.pageInfo.endCursor
-            },
+        fetchMore({
+            query: GET_AUTHORIZED_USER,
+            variables: { ...variables, after: data.authorizedUser.reviews.pageInfo.endCursor },
             updateQuery: (previousResult, { fetchMoreResult }) => {
                 const nextResult = {
-                    repository: {
-                        ...fetchMoreResult.repository,
+                    authorizedUser: {
+                        ...fetchMoreResult.authorizedUser,
                         reviews: {
-                            ...fetchMoreResult.repository.edges,
+                            ...fetchMoreResult.authorizedUser.reviews,
                             edges: [
-                                ...fetchMoreResult.repository.reviews.edges,
-                                ...previousResult.repository.reviews.edges
-                            ]
-                        }
+                                ...previousResult.authorizedUser.reviews.edges,
+                                ...fetchMoreResult.authorizedUser.reviews.edges
+                            ],
+                        },
                     },
                 };
-
 
                 return nextResult;
             },
         });
     };
 
-    return { getReviews, result, fetchMore: handleFetchMore };
-}
+    return { loading, data, fetchMore: handleFetchMore };
+};
 
 export default useReviews;
