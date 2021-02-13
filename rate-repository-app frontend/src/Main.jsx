@@ -23,14 +23,14 @@ const Main = () => {
         <View style={styles.container}>
             <AppBar />
             <Switch>
+                <Route exact path="/">
+                    <RepositoryList />
+                </Route>
                 <Route path="/createreview">
                     <CreateReview />
                 </Route>
                 <Route path="/signup">
                     <SignUp />
-                </Route>
-                <Route exact path="/">
-                    <RepositoryList />
                 </Route>
                 <Route path="/signin">
                     <SignIn />

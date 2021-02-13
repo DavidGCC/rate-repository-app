@@ -9,11 +9,41 @@ const sortBy = {
 }
 
 const useRepositories = (sort, query) => {
-    const { data, loading, error } = useQuery(GET_REPOS, {
-        fetchPolicy: "cache-first",
-        variables: {...sortBy[sort], searchKeyword: query}
+    const variables = { ...sortBy[sort], searchKeyword: query, first: 6 };
+    const { data, loading, fetchMore } = useQuery(GET_REPOS, {
+        fetchPolicy: "cache-and-network",
+        variables
     });
-    return { data, loading, error };
+
+    const handleFetchMore = () => {
+        const canFetchMore = !loading && data && data.repositories.pageInfo.hasNextPage;
+        if (!canFetchMore) {
+            return;
+        }
+
+        fetchMore({
+            query: GET_REPOS,
+            variables: {
+                after: data.repositories.pageInfo.endCursor,
+                ...variables
+            },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+                const nextResult = {
+                    repositories: {
+                        ...fetchMoreResult.repositories,
+                        edges: [
+                            ...previousResult.repositories.edges,
+                            ...fetchMoreResult.repositories.edges
+                        ],
+                    },
+                };
+
+                return nextResult;
+            },
+        });
+    };
+
+    return { data, loading, fetchMore: handleFetchMore };
 };
 
 export default useRepositories;

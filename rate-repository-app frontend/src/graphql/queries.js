@@ -3,12 +3,16 @@ import { repoInfoFragment } from "./fragments";
 
 
 export const GET_REPOS = gql`
-    query getRepos($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String){
-        repositories (orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword){
+    query getRepos($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String, $first: Int, $after: String){
+        repositories (orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword, first: $first, after: $after){
             edges {
                 node {
                     ...repoInfo
                 }
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
             }
         }
     }
@@ -24,21 +28,13 @@ export const GET_AUTHORIZED_USER = gql`
     }
 `;
 
+
 export const GET_REPOSITORY = gql`
-    query getRepository($id: ID!) {
+    query getRepo($id: ID!, $first: Int, $after: String) {
         repository (id: $id) {
             ...repoInfo
             url
-        }
-    }
-    ${repoInfoFragment}
-`;
-
-export const GET_REVIEWS = gql`
-    query getRepoReviews($id: ID!) {
-        repository (id: $id) {
-            ...repoInfo
-            reviews {
+            reviews (first: $first, after: $after){
                 edges {
                     node {
                         id 
@@ -50,6 +46,10 @@ export const GET_REVIEWS = gql`
                         text
                         rating
                     }
+                }
+                pageInfo {
+                    endCursor
+                    hasNextPage
                 }
             }
         }

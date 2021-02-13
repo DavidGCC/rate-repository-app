@@ -15,15 +15,18 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.itemSeparator}></View>
 
 
-const SingleRepositoryContainer = ({ repoResult, reviewsResult }) => {
+const SingleRepositoryContainer = ({ data, onEndReached, renderLoading }) => {
     return (
         <FlatList
-            ListHeaderComponent={() => <SingleRepository result={repoResult} />}
-            data={reviewsResult.data?.repository.reviews.edges}
+            ListHeaderComponent={() => <SingleRepository data={data} />}
+            data={data?.repository.reviews.edges}
             ItemSeparatorComponent={ItemSeparator}
             keyExtractor={(review) => review.node.id}
             renderItem={({ item }) => <Review item={item} />}
             contentContainerStyle={{ paddingBottom: 160 }}
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
+            ListFooterComponent={renderLoading}
         />
 
     )

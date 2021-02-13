@@ -35,7 +35,6 @@ const validationSchema = yup.object().shape({
 });
 
 const SignInForm = ({ onSubmit, isInvalid }) => {
-    console.log(isInvalid);
     return (
         <Formik
             initialValues={{ username: "", password: "" }}

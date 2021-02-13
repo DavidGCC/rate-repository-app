@@ -1,24 +1,21 @@
 import React from "react";
+import { ActivityIndicator } from "react-native";
 import { useParams } from "react-router-native";
 
-import useReviews from "../../hooks/useReviews";
 import useRepository from "../../hooks/useRepository";
 
 import SingleRepositoryContainer from "./SingleRepositoryContainer";
 
 
 const ReposiotryReviews = () => {
-    const { getReviews, result: reviewsResult } = useReviews();
-    const { getRepo, result: repoResult } = useRepository();
     const { id } = useParams();
+    const { data, loading, fetchMore } = useRepository(id);
 
-    React.useEffect(() => {
-        getReviews(id);
-        getRepo(id);
-    }, []);
+    const handleEndReached = () => fetchMore();
+    const renderLoading = () => loading && <ActivityIndicator size="large" color="#ff2222"></ActivityIndicator>;
 
     return (
-        <SingleRepositoryContainer repoResult={repoResult} reviewsResult={reviewsResult} />
+        <SingleRepositoryContainer data={data} onEndReached={handleEndReached} renderLoading={renderLoading}/>
     )
 
 }
