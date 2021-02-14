@@ -1,14 +1,18 @@
 import React from "react";
 import { FlatList } from "react-native";
 
-import ReviewItem from "../ReviewItem";
+import MyReviewItem from "./MyReviewItem";
 
-const MyReviewsListContainer = ({ data, renderLoading, onEndReached }) => {
+const MyReviewsListContainer = ({ data, renderLoading, onEndReached, handleViewRepository, handleDeleteReview }) => {
     return (
         <FlatList
             data={data?.edges}
             keyExtractor={({ node }) => node.id}
-            renderItem={({ item }) => <ReviewItem item={item} repository/>}
+            renderItem={({ item }) => <MyReviewItem 
+                handleViewRepository={() => handleViewRepository(item.node.repository.id)}
+                handleDeleteReview={() => handleDeleteReview(item.node.id)}
+                item={item}
+                />}
             ListFooterComponent={renderLoading}
             contentContainerStyle={{ paddingBottom: 160 }}
             onEndReached={onEndReached}

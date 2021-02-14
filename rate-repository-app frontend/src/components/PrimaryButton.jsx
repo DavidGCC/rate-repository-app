@@ -9,22 +9,26 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 10,
         textAlign: "center",
-        fontSize: 30,
-        color: "#fff"
+        color: "#fff",
+        fontSize: 30
     },
     buttonContainer: {
-        borderRadius: 10
+        borderRadius: 10,
+    },
+    dangerButton: {
+        backgroundColor: "#C82333"
     }
 })
 
-const PrimaryButton = ({ onPress, text, ...props }) => {
+const PrimaryButton = ({ onPress, text, style, ...props }) => {
+    const buttonStyle = style ? style : styles.button;
     return (
         <TouchableHighlight
             style={styles.buttonContainer}
             onPress={onPress}
             {...props}
         >
-            <Text style={styles.button}>{text}</Text>
+            <Text style={buttonStyle}>{text}</Text>
         </TouchableHighlight>
     );
 };

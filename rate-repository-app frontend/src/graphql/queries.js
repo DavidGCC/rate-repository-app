@@ -37,6 +37,7 @@ export const GET_AUTHORIZED_USER = gql`
                         rating
                         repository {
                             fullName
+                            id
                         }
                     }
                 }

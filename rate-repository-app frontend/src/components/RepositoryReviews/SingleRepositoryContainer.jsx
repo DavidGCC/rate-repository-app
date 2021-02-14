@@ -26,7 +26,6 @@ const SingleRepositoryContainer = ({ data, onEndReached, renderLoading }) => {
             contentContainerStyle={{ paddingBottom: 160 }}
             onEndReached={onEndReached}
             onEndReachedThreshold={0.5}
-            ListFooterComponent={renderLoading}
         />
 
     )
