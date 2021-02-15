@@ -3,11 +3,11 @@ import { StyleSheet, ScrollView, Dimensions } from "react-native";
 import Constants from "expo-constants";
 import { useQuery } from "@apollo/react-hooks";
 
-import theme from "../theme";
+import theme from "../../theme";
 
 import AppBarTab from "./AppBarTab";
 
-import { GET_AUTHORIZED_USER } from "../graphql/queries";
+import { GET_AUTHORIZED_USER } from "../../graphql/queries";
 
 const styles = StyleSheet.create({
     container: {
