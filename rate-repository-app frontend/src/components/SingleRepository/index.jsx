@@ -3,7 +3,7 @@ import { useParams, BackButton } from "react-router-native";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 
 import useRepository from "../../hooks/useRepository";
-import RepositoryItem from "../RepositoryList/RepositoryItem";
+import RepositoryItem from "../RepositoryItem";
 
 const SingleRepository = ({ data }) => {
     if (!data) {

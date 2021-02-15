@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-import Text from "../../Text";
+import Text from "../Text";
 
 import CardAvatar from "./CardAvatar";
 
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         padding: 10,
         alignSelf: "flex-start",
         marginBottom: 5,
-        fontSize: 13,
+        fontSize: 17,
     },
     headerTextContainer: {
         width: 300,

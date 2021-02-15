@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, StyleSheet, View, ActivityIndicator } from "react-native";
 import { BackButton } from "react-router-native";
 
-import RepositoryItem from "./RepositoryItem";
+import RepositoryItem from "../RepositoryItem";
 import SortDropdown from "../Sort";
 import Search from "../Search";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableWithoutFeedback, StyleSheet, View } from "react-native";
 import { Link } from "react-router-native";
 
-import Text from "./Text";
+import Text from "../Text";
 
 const styles = StyleSheet.create({
     text: {

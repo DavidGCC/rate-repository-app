@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-import StackedElement from "../../StackedElement";
+import StackedElement from "../StackedElement";
 
 const styles = StyleSheet.create({
     popularityContainer: {

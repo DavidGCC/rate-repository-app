@@ -5,7 +5,7 @@ import * as Linking from "expo-linking";
 
 import CardHeader from "./CardHeader";
 import CardPopularity from "./CardPopularity";
-import Text from "../../Text";
+import Text from "../Text";
 
 
 const styles = StyleSheet.create({
