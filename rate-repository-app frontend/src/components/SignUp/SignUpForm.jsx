@@ -60,7 +60,7 @@ const SignUpForm = ({ handleSubmit }) => {
                         secureTextEntry
                     />
                     <FormikTextInput
-                        placeholder="confirmPassword"
+                        placeholder="Confirm Password"
                         name="confirmPassword"
                         style={styles.input}
                         secureTextEntry
