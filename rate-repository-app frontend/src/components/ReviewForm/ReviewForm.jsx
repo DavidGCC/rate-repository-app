@@ -3,10 +3,11 @@ import { View, StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { BackButton } from "react-router-native";
+import { Button } from "react-native-paper";
 
-import Text from "../Text";
 import FormikTextInput from "../FormikTextInput";
-import PrimaryButton from "../PrimaryButton";
+
+import theme from "../../theme";
 
 
 const styles = StyleSheet.create({
@@ -22,6 +23,9 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
     },
+    button: {
+        backgroundColor: theme.colors.buttonPrimary
+    }
 })
 
 const validationSchema = yup.object().shape({
@@ -70,7 +74,7 @@ const ReviewForm = ({ handleSubmit }) => {
                         style={styles.input}
                         multiline
                     />
-                    <PrimaryButton text="Create Review" onPress={handleSubmit} />
+                    <Button mode="contained" onPress={handleSubmit} style={styles.button}>Create Review</Button>
                     <BackButton></BackButton>
                 </View>
             )}

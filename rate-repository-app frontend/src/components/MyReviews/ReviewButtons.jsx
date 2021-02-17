@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { Button } from "react-native-paper";
 
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,10 +16,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     buttonView: {
-        backgroundColor: "#5450ff"
+        backgroundColor: theme.colors.buttonPrimary
     },
     buttonDelete: {
-        backgroundColor: "#C82333"
+        backgroundColor: theme.colors.buttonDanger
     },
 });
 

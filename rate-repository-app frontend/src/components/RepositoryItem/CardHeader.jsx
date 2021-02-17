@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     language: {
-        backgroundColor: "#0390fc",
+        backgroundColor: "#5482f7",
         flex: 0,
         textAlign: "center",
         borderRadius: 10,

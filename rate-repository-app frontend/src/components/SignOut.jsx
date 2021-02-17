@@ -1,19 +1,16 @@
 import React from "react";
 import { useHistory, BackButton } from "react-router-native";
-import { TouchableHighlight, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useApolloClient } from "@apollo/react-hooks";
+import { Button } from "react-native-paper";
 import AuthStorageContext from "../contexts/AuthStorageContext";
 
 import Text from "./Text";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: "#A93226",
-        height: 50,
-        borderRadius: 10,
-        textAlign: "center",
-        fontSize: 30,
-        color: "#fff",
+        backgroundColor: theme.colors.buttonDanger,
     },
     container: {
         marginTop: 300,
@@ -34,12 +31,10 @@ const SignOut = () => {
     };
 
     return (
-        <>
-            <TouchableHighlight style={styles.container} onPress={onPress}>
-                <Text style={styles.button}>Sign Out</Text>
-            </TouchableHighlight>
+        <View style={styles.container}>
+            <Button onPress={onPress} mode="contained" style={styles.button}>Sign Out</Button>
             <BackButton></BackButton>
-        </>
+        </View>
     );
 };
 

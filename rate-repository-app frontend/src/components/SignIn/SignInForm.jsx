@@ -2,11 +2,12 @@ import React from "react";
 import FormikTextInput from "../FormikTextInput";
 import * as yup from "yup";
 import { BackButton } from "react-router-native";
+import { Button } from "react-native-paper";
 
 import { Formik } from "formik";
-import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
-import PrimaryButton from "../PrimaryButton";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
     container: {
@@ -26,6 +27,9 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         marginLeft: 50,
         color: "#d73a4a"
+    },
+    button: {
+        backgroundColor: theme.colors.buttonPrimary
     }
 });
 
@@ -59,7 +63,7 @@ const SignInForm = ({ onSubmit, isInvalid }) => {
                             <Text style={styles.error}>Invalid username or password</Text>
                         </View>
                     )}
-                    <PrimaryButton text="Sign In" onPress={handleSubmit} />
+                    <Button onPress={handleSubmit} mode="contained" style={styles.button}>Sign In</Button>
                     <BackButton></BackButton>
                 </View>
             )}

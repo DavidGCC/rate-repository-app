@@ -3,9 +3,10 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { StyleSheet, View } from "react-native";
 import { BackButton } from "react-router-native";
+import { Button } from "react-native-paper";
 
+import theme from "../../theme";
 import FormikTextInput from "../FormikTextInput";
-import PrimaryButton from "../PrimaryButton";
 
 const styles = StyleSheet.create({
     container: {
@@ -20,6 +21,9 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
     },
+    button: {
+        backgroundColor: theme.colors.buttonPrimary
+    }
 });
 
 const initialValues = {
@@ -69,7 +73,7 @@ const SignUpForm = ({ handleSubmit }) => {
                         style={styles.input}
                         secureTextEntry
                     />
-                    <PrimaryButton text="Sign Up" onPress={handleSubmit} />
+                    <Button onPress={handleSubmit} mode="contained" style={styles.button}>Sign Up</Button>
                     <BackButton></BackButton>
                 </View>
             )}
