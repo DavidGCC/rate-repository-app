@@ -51,6 +51,8 @@ class RepositoryListContainer extends React.Component {
                 ListHeaderComponent={this.renderHeader}
                 onEndReached={this.props.onEndReached}
                 onEndReachedThreshold={0.5}
+                refreshing={this.props.isRefreshing}
+                onRefresh={this.props.handleRefresh}
             />
         );
     }

@@ -10,7 +10,7 @@ const sortBy = {
 
 const useRepositories = (sort, query) => {
     const variables = { ...sortBy[sort], searchKeyword: query, first: 6 };
-    const { data, loading, fetchMore } = useQuery(GET_REPOS, {
+    const { data, loading, fetchMore, refetch } = useQuery(GET_REPOS, {
         fetchPolicy: "cache-and-network",
         variables
     });
@@ -43,7 +43,7 @@ const useRepositories = (sort, query) => {
         });
     };
 
-    return { data, loading, fetchMore: handleFetchMore };
+    return { data, loading, fetchMore: handleFetchMore, refetch };
 };
 
 export default useRepositories;

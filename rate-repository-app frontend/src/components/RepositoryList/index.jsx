@@ -9,7 +9,8 @@ const RepositoryList = () => {
     const [sort, setSort] = React.useState("latest");
     const [query, setQuery] = React.useState("");
     const [queryWithDebounce] = useDebounce(query, 500);
-    const { data, loading, fetchMore } = useRepositories(
+    const [isRefreshing, setIsRefreshing] = React.useState(false);
+    const { data, loading, fetchMore, refetch } = useRepositories(
         sort,
         queryWithDebounce
     );
@@ -18,7 +19,14 @@ const RepositoryList = () => {
             <ActivityIndicator size="large" color="ff2222"></ActivityIndicator>
         );
     const handleEndReached = () => fetchMore();
-
+    const handleRefresh = () => {
+        refetch();
+        if (loading) {
+            setIsRefreshing(true);
+        } else {
+            setIsRefreshing(false);
+        }
+    }
     return (
         <>
             <RepositoryListContainer
@@ -29,6 +37,8 @@ const RepositoryList = () => {
                 setQuery={setQuery}
                 onEndReached={handleEndReached}
                 footerComponent={renderLoading}
+                isRefreshing={isRefreshing}
+                handleRefresh={handleRefresh}
             />
         </>
     );
