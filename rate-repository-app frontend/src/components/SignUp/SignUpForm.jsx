@@ -12,15 +12,7 @@ const styles = StyleSheet.create({
     container: {
         margin: 20,
     },
-    input: {
-        height: 60,
-        borderWidth: 1,
-        marginBottom: 10,
-        borderColor: "gray",
-        borderRadius: 5,
-        padding: 10,
-        fontSize: 20,
-    },
+    input: theme.input,
     button: {
         backgroundColor: theme.colors.buttonPrimary
     }

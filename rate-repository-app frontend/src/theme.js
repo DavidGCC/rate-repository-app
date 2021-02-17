@@ -24,6 +24,15 @@ const theme = {
         normal: "400",
         bold: "700",
     },
+    input: {
+        height: 60,
+        borderWidth: 1,
+        marginBottom: 10,
+        borderColor: "gray",
+        borderRadius: 5,
+        padding: 10,
+        fontSize: 20,
+    },
 
 };
 
